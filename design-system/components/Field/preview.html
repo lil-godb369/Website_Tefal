@@ -1,0 +1,22 @@
+<!-- @dsCard group="Nhập liệu" height=430 width=900 subtitle="Ô nhập, ô mật khẩu, ô chọn: nhãn trên, gợi ý và lỗi dưới" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Field</title>
+<style>
+  .demo-fields { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-6); max-width: 820px; }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root tf-pad"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { className: 'demo-fields' },
+    h(B.Field, { id: 'f-ten', label: 'Họ và tên', autoComplete: 'name', value: 'Nguyễn Thị Lan' }),
+    h(B.Field, { id: 'f-sdt', label: 'Số điện thoại', type: 'tel', optional: true, value: '', hint: 'Để gọi xác nhận đơn và hẹn giờ giao.' }),
+    h(B.Field, { id: 'f-email', label: 'Email', type: 'email', value: 'lan@gmail', error: 'Nhập email đúng dạng, ví dụ ten@gmail.com.' }),
+    h(B.PasswordField, { id: 'f-matkhau', label: 'Mật khẩu', value: 'matkhau123', hint: 'Ít nhất 8 ký tự.' }),
+    h(B.SelectField, { id: 'f-tinh', label: 'Tỉnh, thành phố', placeholder: 'Chọn tỉnh, thành phố', options: ['Hà Nội', 'TP. Hồ Chí Minh', 'Đà Nẵng'], value: '', error: 'Chọn tỉnh hoặc thành phố.' }),
+    h('label', { className: 'tf-check', style: { alignSelf: 'end' } }, h('input', { type: 'checkbox', defaultChecked: true }), 'Lưu địa chỉ này cho lần sau')));
+</script>
+</body>
+</html>

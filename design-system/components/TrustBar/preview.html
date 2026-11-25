@@ -1,0 +1,24 @@
+<!-- @dsCard group="Khu vực trang" height=300 width=1200 subtitle="Bốn cam kết: hộp trắng dưới hero, bản tối trong chân trang" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>TrustBar</title>
+<style>
+  .demo-ink { margin-top: var(--space-8); padding: var(--space-8) var(--space-6); background: var(--ink); border-radius: var(--radius-md); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root" style="padding:var(--space-8)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  var items = [
+    { icon: 'shield', title: 'Chính hãng Tefal', text: 'Thương hiệu của Groupe SEB' },
+    { icon: 'award', title: 'Bảo hành đến 36 tháng', text: 'Theo chính sách của hãng' },
+    { icon: 'tag', title: 'Giá niêm yết rõ', text: 'Hiện cả giá gốc và mức giảm' },
+    { icon: 'store', title: 'Tư vấn tại showroom', text: 'Xem và nấu thử trước khi mua' }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.TrustBar, { items: items }),
+    h('div', { className: 'demo-ink' }, h(B.TrustBar, { dark: true, items: items }))));
+</script>
+</body>
+</html>

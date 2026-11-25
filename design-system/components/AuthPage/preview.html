@@ -1,0 +1,53 @@
+<!-- @dsCard page group="Khung trang" height=1100 width=1280 subtitle="Đăng nhập / Đăng ký, desktop 1280px; khách bị chuyển tới từ nút Thêm vào giỏ" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Đăng nhập, đăng ký</title></head>
+<body>
+<div id="root" class="tf-root"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function AuthCard() {
+    var m = React.useState('in'), mode = m[0], setMode = m[1];
+    var up = mode === 'up';
+    return h('div', { className: 'tf-auth-card' },
+      h('h1', { className: 'tf-auth-title' }, up ? 'Tạo tài khoản' : 'Đăng nhập'),
+      h('p', { className: 'tf-auth-lead' }, up ? 'Lưu thông tin nhận hàng và theo dõi đơn của bạn.' : 'Chào mừng bạn quay lại.'),
+      h('p', { className: 'tf-auth-why', role: 'status' }, 'Đăng nhập để thêm sản phẩm vào giỏ và đặt hàng. Xong sẽ quay lại trang bạn đang xem.'),
+      h('div', { className: 'tf-auth-tabs', role: 'group', 'aria-label': 'Chọn đăng nhập hoặc đăng ký' },
+        h('button', { type: 'button', 'aria-pressed': up ? 'false' : 'true', onClick: function () { setMode('in'); } }, 'Đăng nhập'),
+        h('button', { type: 'button', 'aria-pressed': up ? 'true' : 'false', onClick: function () { setMode('up'); } }, 'Đăng ký')),
+      h(B.GoogleButton, null, up ? 'Đăng ký với Google' : 'Tiếp tục với Google'),
+      h('p', { className: 'tf-auth-or' }, h('span', null, 'hoặc dùng email')),
+      up
+        ? h('form', { className: 'tf-auth-form', noValidate: true, onSubmit: function (e) { e.preventDefault(); } },
+            h(B.Field, { id: 'dk-ten', label: 'Họ và tên', autoComplete: 'name', value: 'Nguyễn Thị Lan' }),
+            h(B.Field, { id: 'dk-email', label: 'Email', type: 'email', value: 'lan@gmail.com' }),
+            h(B.Field, { id: 'dk-sdt', label: 'Số điện thoại', type: 'tel', optional: true, value: '090 123', error: 'Số điện thoại gồm 10 số, bắt đầu bằng 0.', hint: 'Để gọi xác nhận đơn và hẹn giờ giao.' }),
+            h(B.PasswordField, { id: 'dk-matkhau', label: 'Mật khẩu', value: '', hint: 'Ít nhất 8 ký tự.' }),
+            h(B.PasswordField, { id: 'dk-matkhau2', label: 'Nhập lại mật khẩu', value: '' }),
+            h(B.Button, { variant: 'primary', block: true, type: 'submit' }, 'Tạo tài khoản'),
+            h('p', { className: 'tf-auth-switch' }, 'Đã có tài khoản? ', h('button', { type: 'button', className: 'tf-auth-text', onClick: function () { setMode('in'); } }, 'Đăng nhập')))
+        : h('form', { className: 'tf-auth-form', noValidate: true, onSubmit: function (e) { e.preventDefault(); } },
+            h(B.Field, { id: 'dn-email', label: 'Email', type: 'email', value: 'lan@gmail', error: 'Nhập email đúng dạng, ví dụ ten@gmail.com.' }),
+            h(B.PasswordField, { id: 'dn-matkhau', label: 'Mật khẩu', value: 'matkhau123' }),
+            h('div', { className: 'tf-auth-row' }, h('button', { type: 'button', className: 'tf-auth-text' }, 'Quên mật khẩu?')),
+            h(B.Button, { variant: 'primary', block: true, type: 'submit' }, 'Đăng nhập'),
+            h('p', { className: 'tf-auth-switch' }, 'Chưa có tài khoản? ', h('button', { type: 'button', className: 'tf-auth-text', onClick: function () { setMode('up'); } }, 'Đăng ký'))));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SiteHeader, { cartCount: 0, contact: { text: 'Liên hệ showroom', href: '#' }, account: { href: '#', text: 'Đăng nhập / Đăng ký', label: 'Đăng nhập hoặc đăng ký' } }),
+    h('main', { className: 'tf-container' },
+      h('nav', { className: 'tf-crumbs', 'aria-label': 'Đường dẫn' },
+        h('a', { href: '#' }, 'Trang chủ'), h('span', { 'aria-hidden': 'true' }, '/'), h('span', null, 'Tài khoản')),
+      h('div', { className: 'tf-auth' },
+        h(AuthCard),
+        h('aside', { className: 'tf-auth-aside' },
+          h('h2', null, 'Có tài khoản để'),
+          h(B.TrustBar, { items: [
+            { icon: 'bag', title: 'Đặt hàng nhanh', text: 'Không phải nhập lại địa chỉ' },
+            { icon: 'award', title: 'Theo dõi bảo hành', text: 'Xem lại đơn và ngày mua' },
+            { icon: 'tag', title: 'Nhận tin ưu đãi', text: 'Khi có đợt giảm giá mới' }
+          ] }))))));
+</script>
+</body>
+</html>

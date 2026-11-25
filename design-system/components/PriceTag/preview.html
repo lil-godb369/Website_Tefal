@@ -1,0 +1,14 @@
+<!-- @dsCard group="Giá & thông số" height=150 subtitle="Thẻ sản phẩm và trang chi tiết" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>PriceTag</title></head>
+<body>
+<div id="root" class="tf-root tf-pad tf-stack"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.PriceTag, { price: 2679000, original: 3269000 }),
+    h(B.PriceTag, { price: 3537000, original: 4349000, size: 'lg' })));
+</script>
+</body>
+</html>

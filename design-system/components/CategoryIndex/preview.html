@@ -1,0 +1,23 @@
+<!-- @dsCard group="Điều hướng" height=520 subtitle="Danh sách danh mục cho menu điện thoại và trang trống" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>CategoryIndex</title></head>
+<body>
+<div id="root" class="tf-root tf-pad" style="max-width:560px"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(B.CategoryIndex, {
+    items: [
+      { name: 'Nồi chảo', count: 104 },
+      { name: 'Dao & dụng cụ bếp', count: 25 },
+      { name: 'Máy xay & máy ép', count: 23 },
+      { name: 'Nồi cơm điện', count: 14 },
+      { name: 'Nồi chiên không dầu', count: 7 },
+      { name: 'Ấm đun siêu tốc', count: 7 },
+      { name: 'Nồi áp suất điện', count: 4 }
+    ],
+    total: 'Số mẫu đang bán, dữ liệu ngày 12/10/2026.'
+  }));
+</script>
+</body>
+</html>

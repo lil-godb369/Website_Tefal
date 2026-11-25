@@ -1,0 +1,17 @@
+<!-- @dsCard group="Trạng thái" height=88 subtitle="Tồn kho, xuất xứ, bảo hành, giảm giá" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Badge</title></head>
+<body>
+<div id="root" class="tf-root tf-pad tf-row"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.Badge, { tone: 'ok', dot: true }, 'Còn hàng'),
+    h(B.Badge, { tone: 'alert', dot: true }, 'Hết hàng'),
+    h(B.Badge, null, 'Sản xuất tại Pháp'),
+    h(B.Badge, null, 'Bảo hành 36 tháng'),
+    h(B.Badge, { tone: 'accent' }, 'Giảm 19%')));
+</script>
+</body>
+</html>

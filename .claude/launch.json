@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bnb-erp-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["NVBepNgocBao/web_nhanvien.bepngocbao/node_modules/next/dist/bin/next", "dev", "-p", "3000", "NVBepNgocBao/web_nhanvien.bepngocbao"],
+      "port": 3000
+    },
+    {
+      "name": "tefal-web",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-3", "-m", "http.server", "8000", "--directory", "web"],
+      "port": 8000
+    },
+    {
+      "name": "tefal-next",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["frontend/node_modules/next/dist/bin/next", "dev", "-p", "3100", "frontend"],
+      "port": 3100
+    },
+    {
+      "name": "tefal-design-system",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-3", "-m", "http.server", "8001", "--directory", "design-system"],
+      "port": 8001
+    }
+  ]
+}

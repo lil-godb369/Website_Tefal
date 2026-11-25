@@ -1,0 +1,24 @@
+<!-- @dsCard group="Sản phẩm" height=470 width=1000 subtitle="Thẻ trắng bo 8px: ảnh, nhãn giảm giá, chip con số, giá, nút thêm vào giỏ" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>ProductCard</title>
+<style>
+  .demo-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root" style="padding:var(--space-8)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  var items = [
+    { id: 'DK-061', name: 'Nồi cơm điện cao tần Rice Master Max RK819868', meta: 'Model RK819868', price: 2679000, original: 3269000, art: 'cooker', figure: { value: '1,8', unit: 'L', label: 'Dung tích' } },
+    { id: 'NC-060', name: 'Bộ nồi chảo cán rời 6 món L7819022', meta: 'Model L7819022', price: 3537000, original: 4349000, art: 'set', figure: { value: '6', unit: 'món', label: 'Trong bộ' } },
+    { id: 'DK-145', name: 'Nồi chiên không dầu Easy Fry Grill Precision EY505815', meta: 'Model EY505815', price: 2307000, art: 'fryer', figure: { value: '4,2', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-229', name: 'Nồi chiên không dầu FW501815', meta: 'Model FW501815', price: 0, art: 'fryer', figure: { value: '11', unit: 'L', label: 'Dung tích' } }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { className: 'demo-cards' },
+    items.map(function (it) { return h(B.ProductCard, Object.assign({ key: it.id, image: img(it.id), onAdd: function () {} }, it)); })));
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* Thứ tự: token → thành phần tf- (chép từ web chạy thử) → Tailwind cho mã mới.
+   Không nạp preflight của Tailwind: tf.css tự đặt nền móng, preflight sẽ đổi giao diện đã duyệt. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* tokens.css sinh từ design-system/tokens.json (tools/compile_tokens.py). Sửa ở design-system rồi chép sang. */
+@import "../styles/tokens.css";
+@import "../styles/tf.css";
+@import "../styles/site.css";
+
+/* next/font đặt tên họ font riêng; ghi đè hai biến font của token cho đúng tên đó */
+:root {
+  --font-display: var(--font-be-vietnam), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-be-vietnam), "Segoe UI", system-ui, sans-serif;
+}
+
+/* Bản chạy thử dùng body[data-page="product"]; bản Next.js gắn lớp is-pdp lên thanh so sánh */
+@media (max-width: 767px) { .tf-cmpbar.is-pdp { bottom: 84px; } }
+
+/* Chip lọc và tab Đăng nhập/Đăng ký là liên kết (đổi URL), không phải nút: trạng thái chọn dùng aria-current */
+a.tf-chip { display: inline-flex; align-items: center; text-decoration: none; }
+.tf-chip[aria-current] { background: var(--text); border-color: var(--text); color: #fff; }
+.tf-auth-tabs a { display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: var(--radius-round); color: var(--text-muted); font: 600 13px/1 var(--font-sans); text-decoration: none; }
+.tf-auth-tabs a[aria-current="page"] { background: var(--surface); color: var(--text); box-shadow: inset 0 -2px 0 var(--accent), 0 1px 3px rgba(29,28,25,0.12); }
+.tf-auth-tabs a:hover { color: var(--text); }
+.tf-auth-tabs a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Tiêu đề nhận focus khi đổi trang (RouteFocus) để trình đọc màn hình đọc; không vẽ khung focus lên chữ */
+#noi-dung h1[tabindex="-1"]:focus { outline: none; }
+
+/* Nút giỏ ở thẻ Giờ vàng khi SP tạm hết hàng */
+.tf-flash-add:disabled { opacity: 0.4; cursor: not-allowed; }
+.tf-flash-add:disabled:hover { background: var(--accent-soft); color: #8a0d1a; }
+
+/* Video giới thiệu SP: khung 16:9 nền xám như ảnh SP, chú thích nhỏ bên dưới */
+.tf-video { margin: 0; }
+.tf-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--surface-raised); }
+.tf-video video:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.tf-video figcaption { display: grid; gap: 4px; margin-top: var(--space-3); }
+.tf-video-name { color: var(--text); font: 500 16px/1.4 var(--font-sans); text-decoration: none; }
+.tf-video-name:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tf-video-note { color: var(--text-muted); font: 400 13px/1.5 var(--font-sans); }
+.tf-video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+@media (max-width: 1023px) { .tf-video-grid { grid-template-columns: 1fr; } }
+
+/* Phân trang danh mục: viên thuốc như nút của phong cách C, trang đang xem nền đen */
+.tf-pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-2); margin: var(--space-12) 0 var(--space-8); }
+.tf-pager ol { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.tf-pager li { display: flex; align-items: center; min-width: 24px; justify-content: center; color: var(--text-muted); }
+.tf-pager a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 var(--space-4); border: 1px solid #cacacb; border-radius: var(--radius-round); color: var(--text); font: 500 14px/1 var(--font-sans); font-variant-numeric: tabular-nums; text-decoration: none; box-sizing: border-box; }
+.tf-pager a:hover { border-color: var(--text); }
+.tf-pager a[aria-current="page"] { background: var(--text); border-color: var(--text); color: #fff; }
+.tf-pager a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Token → tiện ích Tailwind: bg-surface, text-muted, text-sale, rounded-pill, … */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-brand: var(--brand);
+  --color-sale: var(--sale);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-ok: var(--ok);
+  --color-alert: var(--alert);
+  --radius-pill: var(--radius-round);
+  --container-site: var(--container-max);
+}

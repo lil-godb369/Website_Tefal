@@ -1,0 +1,50 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tefal Web</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); overflow: hidden; }
+  .cover { position: relative; width: 960px; height: 288px; overflow: hidden; background: var(--bg); }
+  .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
+  .art svg { display: block; width: 480px; height: 288px; }
+  .ink { fill: var(--text); }
+  .accent { fill: var(--accent); }
+  .tint { fill: var(--tint); }
+  .soft { fill: var(--accent-soft); }
+  .r-md { rx: var(--radius-md); }
+  .r-lg { rx: var(--radius-lg); }
+  .words { position: absolute; left: var(--space-12); bottom: var(--space-8); max-width: 440px; }
+  .name { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 88px; line-height: .95; letter-spacing: -0.01em; color: var(--text); font-variant-numeric: lining-nums; }
+  .tag { margin: var(--space-3) 0 0 2px; font-size: 14px; line-height: 20px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="art" aria-hidden="true">
+    <svg viewBox="0 0 480 288" width="480" height="288">
+      <!--
+        blocks      accent 208×256 (the Tefal red, largest) · text/ink 144×208 bled off the top (the dark strip and footer) · tint 112×192 bled off the right (the warm grey hero and promo panels) · accent-soft tiles inside the ink slab — ≈45% of 480×288
+        arrangement one tall red slab between a dark slab hanging from the top edge and a warm grey satellite bleeding right; red and grey bottoms on one line space-4 above the edge; space-4 gutters
+        pattern     geometric, modular: "six category tiles, 8px cards with a thin line" → a 2×2 grid of radius-md tiles with one merged two-wide, cut into the ink slab in accent-soft
+        scales      sides in space-4/space-6/space-12 multiples; gutters space-4; corners radius-md (cards, tiles) and radius-lg (the hero panel)
+      -->
+      <rect class="ink r-md" x="16" y="-16" width="144" height="232"/>
+      <rect class="soft r-md" x="32" y="48" width="48" height="48"/>
+      <rect class="soft r-md" x="96" y="48" width="48" height="48"/>
+      <rect class="soft r-md" x="32" y="112" width="48" height="48"/>
+      <rect class="soft r-md" x="96" y="112" width="48" height="48"/>
+      <rect class="soft r-md" x="32" y="176" width="112" height="24"/>
+      <rect class="accent r-lg" x="176" y="16" width="208" height="256"/>
+      <rect class="tint r-lg" x="400" y="80" width="112" height="192"/>
+    </svg>
+  </div>
+  <div class="words">
+    <h1 class="name">Tefal Web</h1>
+    <p class="tag">Đồ bếp Tefal cho mỗi bữa cơm.</p>
+  </div>
+</div>
+</body>
+</html>

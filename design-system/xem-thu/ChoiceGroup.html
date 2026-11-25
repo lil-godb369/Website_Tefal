@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChoiceGroup — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+<style>
+  .demo-choices { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); max-width: 860px; align-items: start; }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root tf-pad"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function Demo() {
+    var d = React.useState('giao'), delivery = d[0], setDelivery = d[1];
+    var y = React.useState('cod'), payment = y[0], setPayment = y[1];
+    return h('div', { className: 'demo-choices' },
+      h(B.ChoiceGroup, { legend: 'Chọn cách nhận hàng', name: 'demo-giao', value: delivery, onChange: setDelivery, items: [
+        { key: 'giao', title: 'Giao tận nơi', text: 'Phí giao báo khi gọi xác nhận đơn.' },
+        { key: 'showroom', title: 'Nhận tại showroom', text: 'Xem hàng, nấu thử rồi nhận. Không mất phí giao.' }
+      ] }),
+      h(B.ChoiceGroup, { legend: 'Chọn cách thanh toán', name: 'demo-tra', value: payment, onChange: setPayment, items: [
+        { key: 'cod', icon: 'bag', title: 'Trả tiền mặt khi nhận hàng (COD)', text: 'Kiểm tra hàng rồi mới trả tiền.' },
+        { key: 'chuyen-khoan', icon: 'tag', title: 'Chuyển khoản ngân hàng', text: 'Số tài khoản gửi kèm khi gọi xác nhận đơn.' },
+        { key: 'online', icon: 'shield', title: 'Thẻ ATM, Visa, ví điện tử', text: 'Chưa mở: cần đăng ký cổng thanh toán.', disabled: true }
+      ] }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

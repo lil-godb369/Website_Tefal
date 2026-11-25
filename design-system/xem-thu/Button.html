@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Button — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+
+</head>
+<body>
+<div id="root" class="tf-root tf-pad tf-stack"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { className: 'tf-row' },
+      h(B.Button, { variant: 'primary' }, 'Thêm vào giỏ'),
+      h(B.Button, null, 'Gọi tư vấn'),
+      h(B.Button, { variant: 'dark' }, 'Xem ưu đãi'),
+      h(B.Button, { variant: 'quiet' }, 'Xem bảng thông số'),
+      h(B.Button, { variant: 'primary', disabled: true }, 'Hết hàng')),
+    h('div', { className: 'tf-row' },
+      h(B.Button, { variant: 'primary', size: 'sm' }, 'Thêm vào giỏ'),
+      h(B.Button, { size: 'sm' }, 'Gọi báo giá')),
+    h('div', { style: { width: 320 } }, h(B.GoogleButton, null, 'Tiếp tục với Google'))));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

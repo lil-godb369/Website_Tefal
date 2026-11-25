@@ -1,0 +1,24 @@
+{
+  "name": "tefal-video",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mẫu video giới thiệu sản phẩm Tefal dựng từ ảnh SP và thông số (Remotion)",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts SP-DK-061 out/DK-061.mp4",
+    "typecheck": "tsc --noEmit",
+    "render:all": "node scripts/render-all.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.538",
+    "@remotion/google-fonts": "^4.0.538",
+    "@remotion/transitions": "^4.0.538",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

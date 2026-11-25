@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Thử phong cách — Tefal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900;900&display=swap">
+<style>
+/* Trang tạm để chọn hướng thiết kế, không thuộc web bán hàng.
+   Ba bản dựng theo ngôn ngữ thiết kế trong awesome-design-md (Apple, Airbnb, Nike), giữ màu đỏ Tefal
+   và font Be Vietnam Pro, không dùng logo hay tên thương hiệu nào khác. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Be Vietnam Pro", system-ui, sans-serif; background: #e9e7e3; color: #1d1c19; }
+.page-head { max-width: 1240px; margin: 0 auto; padding: 28px 24px 8px; }
+.page-head h1 { margin: 0 0 6px; font-size: 24px; }
+.page-head p { margin: 0; color: #5f5a50; }
+.opt { max-width: 1240px; margin: 24px auto; padding: 0 24px; }
+.opt-label { display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px; background: #1d1c19; color: #fff; font-size: 13px; font-weight: 600; }
+.opt-note { margin: 10px 0 0; color: #5f5a50; font-size: 14px; max-width: 80ch; }
+.frame { border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+/* ảnh SP: cắt bỏ phần khuyến mãi cửa hàng cũ trong ảnh tạm */
+.ph { position: relative; overflow: hidden; aspect-ratio: 1; display: grid; place-items: center; }
+.ph .crop { position: relative; height: 88%; aspect-ratio: .75; overflow: hidden; }
+.ph .crop img { position: absolute; width: 166.7%; left: -3.3%; top: -16.25%; mix-blend-mode: multiply; }
+
+/* ===== A. Phòng trưng bày (theo Apple) ===== */
+.a { background: #fff; color: #1d1c19; }
+.a-nav { display: flex; justify-content: center; gap: 32px; height: 44px; align-items: center; background: rgba(250,250,252,.9); font-size: 12px; color: #1d1c19; border-bottom: 1px solid #e8e8ed; }
+.a-nav b { font-weight: 700; color: #d10a11; }
+.a-hero { text-align: center; padding: 56px 24px 0; background: #f5f5f7; }
+.a-hero h2 { margin: 0; font-size: 52px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.a-hero p { margin: 10px 0 18px; font-size: 22px; color: #1d1c19; }
+.a-links { display: flex; gap: 14px; justify-content: center; }
+.a-btn { padding: 11px 22px; border-radius: 999px; background: #d10a11; color: #fff; text-decoration: none; font-size: 16px; }
+.a-btn.ghost { background: transparent; color: #d10a11; box-shadow: inset 0 0 0 1px #d10a11; }
+.a-hero .ph { max-width: 420px; margin: 18px auto 0; background: transparent; }
+.a-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; background: #fff; }
+.a-tile { text-align: center; padding: 40px 20px 0; background: #f5f5f7; }
+.a-tile.dark { background: #000; color: #f5f5f7; }
+.a-tile.dark .ph { background: #000; } .a-tile.dark .ph img { mix-blend-mode: normal; filter: none; }
+.a-tile h3 { margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+.a-tile p { margin: 6px 0 14px; font-size: 18px; }
+.a-tile .ph { max-width: 260px; margin: 14px auto 0; background: #f5f5f7; }
+
+/* ===== B. Ấm áp, bo tròn (theo Airbnb) ===== */
+.b { background: #fff; color: #222; padding-bottom: 28px; }
+.b-top { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-bottom: 1px solid #ebebeb; }
+.b-logo { color: #d10a11; font-weight: 800; font-size: 24px; letter-spacing: -.02em; }
+.b-tabs { display: flex; gap: 28px; font-size: 15px; color: #6a6a6a; } .b-tabs b { color: #222; font-weight: 600; border-bottom: 2px solid #222; padding-bottom: 6px; }
+.b-search { margin: 26px auto 8px; display: flex; align-items: center; width: min(760px, 92%); border: 1px solid #ddd; border-radius: 999px; box-shadow: 0 3px 12px rgba(0,0,0,.08); padding: 8px 8px 8px 0; }
+.b-search div { flex: 1; padding: 6px 26px; border-right: 1px solid #ebebeb; }
+.b-search div:last-of-type { border-right: 0; }
+.b-search small { display: block; font-size: 12px; font-weight: 600; color: #222; } .b-search span { font-size: 14px; color: #6a6a6a; }
+.b-orb { width: 48px; height: 48px; border-radius: 50%; background: #d10a11; display: grid; place-items: center; color: #fff; font-size: 18px; }
+.b-cats { display: flex; gap: 32px; justify-content: center; padding: 18px 0 8px; font-size: 12px; color: #6a6a6a; }
+.b-cats span { display: grid; justify-items: center; gap: 6px; } .b-cats i { width: 26px; height: 26px; border-radius: 8px; background: #f2f2f2; display: block; }
+.b-cats .on { color: #222; font-weight: 600; } .b-cats .on i { background: #ffd1da; }
+.b-h { padding: 18px 32px 10px; font-size: 22px; font-weight: 600; letter-spacing: -.02em; margin: 0; }
+.b-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 0 32px; }
+.b-card .ph { border-radius: 14px; background: #f7f7f7; }
+.b-heart { position: absolute; top: 12px; right: 12px; z-index: 2; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.9); display: grid; place-items: center; font-size: 14px; }
+.b-badge { position: absolute; top: 12px; left: 12px; z-index: 2; background: #fff; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+.b-card h4 { margin: 10px 0 2px; font-size: 15px; font-weight: 600; }
+.b-card p { margin: 0; font-size: 14px; color: #6a6a6a; }
+.b-card .price { margin-top: 6px; font-size: 15px; color: #222; } .b-card .price b { font-weight: 700; } .b-card .price s { color: #6a6a6a; margin-left: 6px; }
+
+/* ===== C. Cửa hàng mạnh, đen trắng (theo Nike) ===== */
+.c { background: #fff; color: #111; padding-bottom: 28px; }
+.c-promo { background: #f5f5f5; text-align: center; padding: 10px; font-size: 13px; font-weight: 500; }
+.c-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 36px; }
+.c-logo { font-weight: 900; font-size: 22px; letter-spacing: -.03em; }
+.c-menu { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
+.c-search { background: #f5f5f5; border-radius: 24px; padding: 9px 18px; font-size: 14px; color: #707072; width: 190px; }
+.c-hero { margin: 0 36px; height: 300px; border-radius: 0; display: grid; align-content: end; padding: 32px; color: #fff;
+  background: linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.35) 45%, rgba(0,0,0,0) 70%), url("assets/img/hero-bep.jpg") center 60% / cover; }
+.c-hero h2 { margin: 0; font-size: 64px; font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; line-height: .95; }
+.c-hero p { margin: 10px 0 16px; font-size: 16px; }
+.c-pill { justify-self: start; padding: 12px 24px; border-radius: 999px; background: #fff; color: #111; font-weight: 600; font-size: 15px; }
+.c-filters { display: flex; gap: 10px; padding: 20px 36px 14px; }
+.c-chip { padding: 8px 16px; border-radius: 999px; border: 1px solid #cacacb; font-size: 14px; }
+.c-chip.on { background: #111; border-color: #111; color: #fff; }
+.c-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 36px; }
+.c-card .ph { background: #f5f5f5; }
+.c-card .tag { margin: 10px 0 2px; font-size: 14px; color: #d10a11; font-weight: 600; }
+.c-card h4 { margin: 0; font-size: 15px; font-weight: 600; }
+.c-card p { margin: 2px 0 6px; font-size: 14px; color: #707072; }
+.c-card .price b { font-size: 15px; } .c-card .price s { color: #707072; margin-left: 8px; font-size: 14px; }
+@media (max-width: 800px) {
+  .a-tiles, .b-grid, .c-grid { grid-template-columns: 1fr 1fr; }
+  .a-hero h2 { font-size: 36px; } .c-hero h2 { font-size: 40px; }
+  .b-tabs, .c-menu, .c-search, .b-cats { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="page-head">
+  <h1>Thử 3 hướng thiết kế cho web Tefal</h1>
+  <p>Dựng theo ba file DESIGN.md trong awesome-design-md. Giữ màu đỏ Tefal, font Be Vietnam Pro, ảnh và giá thật. Chọn hướng bạn thích để áp cho cả web.</p>
+</div>
+
+<!-- A -->
+<section class="opt">
+  <span class="opt-label">A · Phòng trưng bày (theo Apple)</span>
+  <div class="frame a">
+    <div class="a-nav"><b>Tefal</b><span>Nồi chảo</span><span>Nồi cơm điện</span><span>Nồi chiên</span><span>Máy xay</span><span>Ấm đun</span></div>
+    <div class="a-hero">
+      <h2>Rice Master Max</h2>
+      <p>Nồi cơm cao tần 1,8 lít. Cơm chín đều từ đáy lên mặt.</p>
+      <div class="a-links"><a class="a-btn" href="#">Mua · 2.679.000 ₫</a><a class="a-btn ghost" href="#">Tìm hiểu thêm</a></div>
+      <div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-061.jpg" alt=""></span></div>
+    </div>
+    <div class="a-tiles">
+      <div class="a-tile"><h3>Mega 7,5 lít</h3><p>Nồi chiên không dầu cho cả nhà.</p><div class="a-links"><a class="a-btn" href="#">Mua</a></div>
+        <div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-069.jpg" alt=""></span></div></div>
+      <div class="a-tile"><h3>UltraBlend</h3><p>Máy xay sinh tố làm sữa hạt.</p><div class="a-links"><a class="a-btn" href="#">Mua</a></div>
+        <div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-050.jpg" alt=""></span></div></div>
+    </div>
+  </div>
+  <p class="opt-note">Từng sản phẩm được giới thiệu như trong phòng trưng bày: tiêu đề lớn ở giữa, nền xám rất nhạt, nút bo tròn, rất ít chữ. Sang và gọn, nhưng cần ảnh sản phẩm đẹp, nét; ảnh hiện tại còn nhỏ và mờ.</p>
+</section>
+
+<!-- B -->
+<section class="opt">
+  <span class="opt-label">B · Ấm áp, bo tròn (theo Airbnb)</span>
+  <div class="frame b">
+    <div class="b-top"><span class="b-logo">Tefal</span><div class="b-tabs"><b>Đồ bếp</b><span>Thương hiệu</span><span>Bài viết</span></div><span style="font-size:14px">Đăng nhập</span></div>
+    <div class="b-search">
+      <div><small>Tìm</small><span>Tên hoặc mã model</span></div>
+      <div><small>Nhóm</small><span>Tất cả nhóm</span></div>
+      <div><small>Giá</small><span>Mọi mức giá</span></div>
+      <span class="b-orb">⌕</span>
+    </div>
+    <div class="b-cats"><span class="on"><i></i>Nồi chảo</span><span><i></i>Nồi cơm điện</span><span><i></i>Nồi chiên</span><span><i></i>Máy xay</span><span><i></i>Dao & dụng cụ</span><span><i></i>Ấm đun</span></div>
+    <h3 class="b-h">Đang giảm giá</h3>
+    <div class="b-grid">
+      <div class="b-card"><div class="ph"><span class="b-badge">−18%</span><span class="b-heart">♡</span><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-061.jpg" alt=""></span></div><h4>Nồi cơm Rice Master Max</h4><p>Cao tần · 1,8 L</p><div class="price"><b>2.679.000 ₫</b><s>3.269.000 ₫</s></div></div>
+      <div class="b-card"><div class="ph"><span class="b-badge">−19%</span><span class="b-heart">♡</span><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-069.jpg" alt=""></span></div><h4>Nồi chiên Mega EY8558E0</h4><p>Không dầu · 7,5 L</p><div class="price"><b>2.213.000 ₫</b><s>2.729.000 ₫</s></div></div>
+      <div class="b-card"><div class="ph"><span class="b-badge">−24%</span><span class="b-heart">♡</span><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-067.jpg" alt=""></span></div><h4>Nồi cơm Rice Master</h4><p>Cao tần · 1,8 L</p><div class="price"><b>2.167.000 ₫</b><s>2.849.000 ₫</s></div></div>
+      <div class="b-card"><div class="ph"><span class="b-badge">−21%</span><span class="b-heart">♡</span><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-050.jpg" alt=""></span></div><h4>Máy xay UltraBlend Silence</h4><p>Làm sữa hạt · 2.000 W</p><div class="price"><b>5.709.000 ₫</b><s>7.259.000 ₫</s></div></div>
+    </div>
+  </div>
+  <p class="opt-note">Nền trắng sạch, ô tìm kiếm dạng viên thuốc có nút đỏ tròn, hàng biểu tượng danh mục, thẻ không viền, ảnh bo 14px, trái tim trên ảnh. Thân thiện, dễ dùng, gần với cách khách Việt quen mua online.</p>
+</section>
+
+<!-- C -->
+<section class="opt">
+  <span class="opt-label">C · Cửa hàng mạnh, đen trắng (theo Nike)</span>
+  <div class="frame c">
+    <div class="c-promo">Hàng chính hãng Tefal · Bảo hành đến 36 tháng</div>
+    <div class="c-top"><span class="c-logo">Tefal</span><div class="c-menu"><span>Mới về</span><span>Nồi chảo</span><span>Đồ điện</span><span>Giảm giá</span></div><span class="c-search">Tìm sản phẩm</span></div>
+    <div class="c-hero"><h2>Nấu nhanh.<br>Dọn gọn.</h2><p>Đồ bếp Tefal cho mỗi bữa cơm.</p><span class="c-pill">Mua ngay</span></div>
+    <div class="c-filters"><span class="c-chip on">Tất cả</span><span class="c-chip">Nồi cơm điện</span><span class="c-chip">Nồi chiên</span><span class="c-chip">Đang giảm giá</span></div>
+    <div class="c-grid">
+      <div class="c-card"><div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-061.jpg" alt=""></span></div><p class="tag">Giảm 18%</p><h4>Rice Master Max RK819868</h4><p>Nồi cơm cao tần</p><div class="price"><b>2.679.000 ₫</b><s>3.269.000 ₫</s></div></div>
+      <div class="c-card"><div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-069.jpg" alt=""></span></div><p class="tag">Giảm 19%</p><h4>Mega EY8558E0</h4><p>Nồi chiên không dầu</p><div class="price"><b>2.213.000 ₫</b><s>2.729.000 ₫</s></div></div>
+      <div class="c-card"><div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-067.jpg" alt=""></span></div><p class="tag">Giảm 24%</p><h4>Rice Master RK818A68</h4><p>Nồi cơm cao tần</p><div class="price"><b>2.167.000 ₫</b><s>2.849.000 ₫</s></div></div>
+      <div class="c-card"><div class="ph"><span class="crop"><img src="https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/DK-050.jpg" alt=""></span></div><p class="tag">Giảm 21%</p><h4>UltraBlend Silence</h4><p>Máy xay sinh tố</p><div class="price"><b>5.709.000 ₫</b><s>7.259.000 ₫</s></div></div>
+    </div>
+  </div>
+  <p class="opt-note">Chữ in hoa rất đậm trên ảnh lớn, nút đen bo tròn, nền xám nhạt cho ảnh, lưới sản phẩm sát nhau, chỉ dùng đỏ cho giá giảm. Mạnh, hiện đại, kiểu cửa hàng thời trang/thể thao.</p>
+</section>
+</body>
+</html>

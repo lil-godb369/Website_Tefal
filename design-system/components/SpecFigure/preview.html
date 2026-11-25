@@ -1,0 +1,26 @@
+<!-- @dsCard group="Giá & thông số" height=260 subtitle="Một con số quyết định: số lớn trên trang chi tiết, chip trên thẻ SP" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>SpecFigure</title>
+<style>
+  .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--space-8); border-top: 1px solid var(--line); padding-top: var(--space-6); }
+  .demo-chips { margin-top: var(--space-8); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root tf-pad"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { className: 'demo-grid' },
+      h(B.SpecFigure, { value: '1,8', unit: 'L', label: 'Dung tích lòng nồi', note: 'Rice Master Max RK819868, cho gia đình 4–6 người' }),
+      h(B.SpecFigure, { value: '7,5', unit: 'L', label: 'Dung tích giỏ chiên', note: 'Mega EY8558E0' }),
+      h(B.SpecFigure, { value: '2.000', unit: 'W', label: 'Công suất', note: 'UltraBlend Silence BL98SC66' }),
+      h(B.SpecFigure, { value: '6', unit: 'món', label: 'Trong bộ', note: 'Ingenio L7819022, sản xuất tại Pháp' })),
+    h('div', { className: 'tf-row demo-chips' },
+      h(B.SpecFigure, { chip: true, value: '1,8', unit: 'L', label: 'Dung tích' }),
+      h(B.SpecFigure, { chip: true, value: '2.000', unit: 'W', label: 'Công suất' }),
+      h(B.SpecFigure, { chip: true, value: '20–28', unit: 'cm', label: 'Cỡ trong bộ' }))));
+</script>
+</body>
+</html>

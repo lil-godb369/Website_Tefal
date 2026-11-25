@@ -1,0 +1,22 @@
+<!-- @dsCard group="Hành động" height=210 subtitle="Chính, viền, tối, chữ; cỡ nhỏ cho thẻ SP; nút Google" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Button</title></head>
+<body>
+<div id="root" class="tf-root tf-pad tf-stack"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { className: 'tf-row' },
+      h(B.Button, { variant: 'primary' }, 'Thêm vào giỏ'),
+      h(B.Button, null, 'Gọi tư vấn'),
+      h(B.Button, { variant: 'dark' }, 'Xem ưu đãi'),
+      h(B.Button, { variant: 'quiet' }, 'Xem bảng thông số'),
+      h(B.Button, { variant: 'primary', disabled: true }, 'Hết hàng')),
+    h('div', { className: 'tf-row' },
+      h(B.Button, { variant: 'primary', size: 'sm' }, 'Thêm vào giỏ'),
+      h(B.Button, { size: 'sm' }, 'Gọi báo giá')),
+    h('div', { style: { width: 320 } }, h(B.GoogleButton, null, 'Tiếp tục với Google'))));
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductPage — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+
+</head>
+<body>
+<div id="root" class="tf-root"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  // Nồi cơm điện cao tần Rice Master Max RK819868 (DK-061), dữ liệu 12/10/2026
+  var specs = [
+    ['Loại', 'Nồi cơm điện cao tần'], ['Dung tích', '1,8 lít'], ['Công suất', '1.400 W'], ['Chất liệu', 'Ceramic'],
+    ['Kiểu điều khiển', 'Cảm ứng'], ['Kích thước (R × S × C)', '261 × 336 × 265 mm'], ['Bảo hành', '24 tháng'], ['Xuất xứ', 'Trung Quốc']
+  ];
+  var related = [
+    { id: 'DK-064', name: 'Nồi cơm điện tử RK762168', model: 'RK762168', price: 2483000, original: 3059000, fig: '1,5' },
+    { id: 'DK-067', name: 'Nồi cơm điện cao tần Rice Master RK818A68', model: 'RK818A68', price: 2167000, original: 2849000, fig: '1,8' },
+    { id: 'DK-090', name: 'Nồi cơm điện tử Delirice Plus 1.8L RK776968', model: 'RK776968', price: 1874000, original: 2099000, fig: '1,8' },
+    { id: 'DK-073', name: 'Nồi cơm điện tử Delirice Max RK7778Y0', model: 'RK7778Y0', price: 1871000, original: 2310000, fig: '2' },
+    { id: 'DK-077', name: 'Nồi cơm điện tử Delirice Plus 1.8L RK776B68', model: 'RK776B68', price: 1715000, original: 2119000, fig: '1,8' }
+  ];
+
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SiteHeader, { account: { href: '#', text: 'Đăng nhập / Đăng ký', label: 'Đăng nhập hoặc đăng ký' }, active: 'Nồi cơm điện', cartCount: 2, contact: { text: 'Liên hệ showroom', href: '#' } }),
+    h('main', { className: 'tf-container' },
+      h('nav', { className: 'tf-crumbs', 'aria-label': 'Đường dẫn' },
+        h('a', { href: '#' }, 'Trang chủ'), h('span', { 'aria-hidden': 'true' }, '/'),
+        h('a', { href: '#' }, 'Nồi cơm điện'), h('span', { 'aria-hidden': 'true' }, '/'),
+        h('span', null, 'RK819868')),
+      h('div', { className: 'tf-pdp' },
+        h('div', { className: 'tf-gallery', 'aria-label': 'Ảnh sản phẩm' },
+          h(B.Plate, { image: img('DK-061'), alt: 'Nồi cơm điện cao tần Tefal Rice Master Max RK819868', art: 'cooker', eager: true })),
+        h('aside', { className: 'tf-buy' },
+          h('div', null,
+            h('h1', { className: 'tf-buy-name' }, 'Nồi cơm điện cao tần Rice Master Max RK819868'),
+            h('p', { className: 'tf-buy-meta' }, 'Model RK819868, sản xuất tại Trung Quốc')),
+          h(B.PriceTag, { price: 2679000, original: 3269000, size: 'lg' }),
+          h('div', { className: 'tf-card-badges' },
+            h(B.Badge, { tone: 'ok', dot: true }, 'Còn hàng'), h(B.Badge, null, 'Bảo hành 24 tháng')),
+          h('div', { className: 'tf-buy-actions' },
+            h(B.Button, { variant: 'primary' }, 'Thêm vào giỏ'),
+            h(B.Button, null, 'Gọi tư vấn')),
+          h('div', { className: 'tf-figure-row' },
+            h(B.SpecFigure, { value: '1,8', unit: 'L', label: 'Dung tích' }),
+            h(B.SpecFigure, { value: '1.400', unit: 'W', label: 'Công suất' }),
+            h(B.SpecFigure, { value: '24', unit: 'tháng', label: 'Bảo hành' })),
+          h('p', { className: 'tf-buy-note' }, h(B.Icon, { name: 'store', size: 18 }), 'Xem và nấu thử tại showroom trước khi mua.'))),
+      h('section', { className: 'tf-section' },
+        h('div', { className: 'tf-split' },
+          h('div', { className: 'tf-split-aside' }, h('h2', { className: 'tf-section-title' }, 'Thông số và mô tả')),
+          h('div', { style: { display: 'grid', gap: 'var(--space-12)' } },
+            h(B.SpecTable, { rows: specs }),
+            h('div', { className: 'tf-prose' },
+              h('p', null, 'Nồi cơm cao tần dung tích 1,8 lít, cho gia đình 4 đến 6 người.'),
+              h('ul', null,
+                h('li', null, 'Công nghệ cao tần IH Plus và 3DMax gia nhiệt trực tiếp lòng nồi.'),
+                h('li', null, 'Lòng nồi dạng niêu độc quyền của Tefal, cơm chín đều từ đáy lên mặt.')))))),
+      h('section', { className: 'tf-section' },
+        h(B.SectionTitle, { title: 'Cùng nhóm, giá gần nhất', note: 'Nồi cơm điện có 14 mẫu đang bán.', moreHref: '#' }),
+        h('div', { className: 'tf-grid-products' }, related.map(function (d) {
+          return h(B.ProductCard, { key: d.id, name: d.name, meta: 'Model ' + d.model, image: img(d.id), art: 'cooker', price: d.price, original: d.original,
+            figure: { value: d.fig, unit: 'L', label: 'Dung tích' }, onAdd: function () {} });
+        }))))));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

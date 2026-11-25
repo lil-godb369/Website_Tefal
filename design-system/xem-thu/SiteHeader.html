@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiteHeader — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+<style>
+  .demo-phone { width: 390px; margin: var(--space-8) 0 var(--space-8) var(--space-12); border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  var strip = [{ icon: 'shield', text: 'Hàng chính hãng Tefal' }, { icon: 'award', text: 'Bảo hành đến 36 tháng' }, { icon: 'store', text: 'Xem và nấu thử tại showroom' }];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SiteHeader, { active: 'Nồi cơm điện', cartCount: 2, top: strip, contact: { text: 'Liên hệ showroom', href: '#' },
+      account: { href: '#', text: 'Đăng nhập / Đăng ký', label: 'Đăng nhập hoặc đăng ký' } }),
+    h('div', { className: 'demo-phone' }, h(B.SiteHeader, { compact: true, cartCount: 2, top: strip,
+      account: { href: '#', text: 'Chào, Lan', label: 'Tài khoản của Nguyễn Thị Lan', signedIn: true } }))));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

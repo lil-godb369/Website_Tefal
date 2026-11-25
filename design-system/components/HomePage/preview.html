@@ -1,0 +1,131 @@
+<!-- @dsCard page group="Khung trang" height=4900 width=1280 subtitle="Trang chủ, desktop 1280px" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Trang chủ</title></head>
+<body>
+<div id="root" class="tf-root"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  // Ảnh SP chỉ có trong bản xem trên máy (xem-thu); không có ảnh thì hiện hình vẽ nét
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  // Ảnh bếp làm nền hero: trên claude.ai lấy từ kho ảnh của artifact; bản xem-thu đặt window.TF_HERO
+  var HERO_BG = 'url("' + new URL(window.TF_HERO || '/_blob/98ad9f6f5a49f9a6ed510c10424fc264', location.href).href + '")';
+
+  var NAV = ['Nồi chảo', 'Nồi cơm điện', 'Nồi chiên', 'Máy xay & ép', 'Dao & dụng cụ'];
+  var TRUST = [
+    { icon: 'shield', title: 'Chính hãng Tefal', text: 'Thương hiệu của Groupe SEB' },
+    { icon: 'award', title: 'Bảo hành đến 36 tháng', text: 'Theo chính sách của hãng' },
+    { icon: 'tag', title: 'Giá niêm yết rõ', text: 'Hiện cả giá gốc và mức giảm' },
+    { icon: 'store', title: 'Tư vấn tại showroom', text: 'Xem và nấu thử trước khi mua' }
+  ];
+  var TILES = [
+    { name: 'Nồi chảo', count: 104, img: 'NC-060', art: 'set', icon: 'pot' },
+    { name: 'Nồi cơm điện', count: 14, img: 'DK-067', art: 'cooker', icon: 'cooker' },
+    { name: 'Nồi chiên không dầu', count: 7, img: 'DK-068', art: 'fryer', icon: 'fryer' },
+    { name: 'Máy xay & máy ép', count: 23, img: 'DK-050', art: 'blender', icon: 'blender' },
+    { name: 'Dao & dụng cụ bếp', count: 25, img: 'DK-052', art: 'knife', icon: 'knife' },
+    { name: 'Ấm đun siêu tốc', count: 7, img: 'DK-088', art: 'blender', icon: 'kettle' }
+  ];
+  var DEALS = [
+    { id: 'NC-067', name: 'Bộ nồi chảo chống dính vân đá cán rời L827S404', model: 'L827S404', price: 1338000, original: 1789000, art: 'set', figure: { value: '20–28', unit: 'cm', label: 'Cỡ trong bộ' } },
+    { id: 'DK-067', name: 'Nồi cơm điện cao tần Rice Master RK818A68', model: 'RK818A68', price: 2167000, original: 2849000, art: 'cooker', figure: { value: '1,8', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-088', name: 'Bình đun siêu tốc Smart & Light KO850810 1.7L', model: 'KO850810', price: 1102000, original: 1449000, art: 'blender', figure: { value: '1,7', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-123', name: 'Bộ 2 dao Fresh Kitchen K122S205', model: 'K122S205', price: 407000, original: 519000, art: 'knife' },
+    { id: 'DK-129', name: 'Bình giữ nhiệt Easy To Go N2710210', model: 'N2710210', price: 326000, original: 419000, art: 'pan', figure: { value: '0,5', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-050', name: 'Máy xay sinh tố làm sữa hạt UltraBlend Silence BL98SC66', model: 'BL98SC66', price: 5709000, original: 7259000, art: 'blender', figure: { value: '2.000', unit: 'W', label: 'Công suất' } },
+    { id: 'DK-055', name: 'Nồi áp suất điện đa năng Smart Pro IH CY638868', model: 'CY638868', price: 3914000, original: 4810000, art: 'cooker', figure: { value: '5', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-068', name: 'Nồi chiên không dầu điện tử Mega EY855D68', model: 'EY855D68', price: 2222000, original: 2739000, art: 'fryer', figure: { value: '7,5', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-042', name: 'Máy lọc nước BR653BY0', model: 'BR653BY0', price: 15552000, original: 17010000, art: 'blender', figure: { value: '5', unit: 'L', label: 'Dung tích' } },
+    { id: 'NC-102', name: 'Chảo đúc sâu lồng cao cấp 28 cm E2491944', model: 'E2491944', price: 772000, original: 999000, art: 'set', figure: { value: '28', unit: 'cm', label: 'Đường kính' } }
+  ];
+  // Giảm nhiều nhất: xếp thuần theo mức giảm, bỏ các mẫu đã có ở Ưu đãi nổi bật
+  var DEEPEST = [
+    { id: 'DK-113', name: 'Bình đun siêu tốc KO140AE0', model: 'KO140AE0', price: 568000, original: 729000, art: 'blender', figure: { value: '1,5', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-126', name: 'Dụng cụ mài dao Ice Force K2650524', model: 'K2650524', price: 342000, original: 439000, art: 'knife' },
+    { id: 'DK-130', name: 'Bình giữ nhiệt Easy To Go 500ml N2710310', model: 'N2710310', price: 326000, original: 419000, art: 'pan', figure: { value: '0,5', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-131', name: 'Bình giữ nhiệt Easy To Go N3710110', model: 'N3710110', price: 326000, original: 419000, art: 'pan', figure: { value: '0,5', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-133', name: 'Bình giữ nhiệt Easy To Go N3720210', model: 'N3720210', price: 302000, original: 389000, art: 'pan', figure: { value: '0,5', unit: 'L', label: 'Dung tích' } }
+  ];
+  // Hai khu dưới chỉ hiện khi có dữ liệu: đơn đã đặt (mua nhiều nhất) và tài khoản đang đăng nhập (đã xem). Khung dùng mẫu để thấy bố cục.
+  var BEST = [DEALS[1], DEALS[7], DEALS[0], DEALS[5], DEALS[2]];
+  var VIEWED = [
+    { id: 'DK-061', name: 'Nồi cơm điện cao tần Rice Master Max RK819868', model: 'RK819868', price: 2679000, original: 3269000, art: 'cooker', figure: { value: '1,8', unit: 'L', label: 'Dung tích' } },
+    DEALS[1], DEALS[7]
+  ];
+  function cards(list) {
+    return h('div', { className: 'tf-grid-5' }, list.map(function (d) {
+      return h(B.ProductCard, { key: d.id, name: d.name, meta: 'Model ' + d.model, image: img(d.id), art: d.art, price: d.price, original: d.original, figure: d.figure, onAdd: function () {} });
+    }));
+  }
+
+  function Footer() {
+    var groups = ['Nồi chảo', 'Nồi cơm điện', 'Nồi chiên không dầu', 'Nồi áp suất điện', 'Máy xay & máy ép', 'Dao & dụng cụ bếp', 'Ấm đun siêu tốc', 'Ngoài bếp'];
+    return h('footer', { className: 'tf-footer' },
+      h('div', { className: 'tf-container' },
+        h('div', { className: 'tf-footer-trust' }, h(B.TrustBar, { dark: true, items: TRUST })),
+        h('div', { className: 'tf-footer-cols' },
+          h('div', null,
+            h('a', { className: 'tf-wordmark', href: '#' }, h('span', { className: 'tf-wordmark-name' }, 'Tefal'), h('span', { className: 'tf-wordmark-sub' }, 'Thương hiệu danh tiếng từ Pháp')),
+            h('p', null, 'Nồi chảo, nồi cơm, nồi chiên, máy xay và dụng cụ bếp Tefal. Mỗi sản phẩm hiện rõ thông số và giá.'),
+            h('p', null, 'Showroom: địa chỉ, giờ mở cửa và số điện thoại tư vấn sẽ đặt ở đây.')),
+          h('div', null, h('h4', null, 'Danh mục'), h('ul', null, groups.map(function (g) { return h('li', { key: g }, h('a', { href: '#' }, g)); }))),
+          h('div', null, h('h4', null, 'Mua hàng'), h('ul', null, ['Tất cả đồ bếp', 'Đang giảm giá', 'Giỏ hàng'].map(function (t) { return h('li', { key: t }, h('a', { href: '#' }, t)); }))),
+          h('div', null,
+            h('h4', null, 'Nhận tin ưu đãi'),
+            h('p', null, 'Báo khi có mẫu mới hoặc đợt giảm giá.'),
+            h('form', { className: 'tf-subscribe', onSubmit: function (e) { e.preventDefault(); } },
+              h('label', { className: 'tf-sr', htmlFor: 'demo-email' }, 'Email của bạn'),
+              h('input', { id: 'demo-email', type: 'email', placeholder: 'Email của bạn' }),
+              h('button', { type: 'submit' }, 'Đăng ký')))),
+        h('div', { className: 'tf-footer-bottom' },
+          h('span', null, 'Giá và tồn kho lấy từ dữ liệu ngày 12/10/2026.'),
+          h('span', null, 'Tefal là thương hiệu của Groupe SEB.'))));
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SiteHeader, { account: { href: '#', text: 'Đăng nhập / Đăng ký', label: 'Đăng nhập hoặc đăng ký' },
+      items: NAV, cartCount: 2,
+      top: [{ icon: 'shield', text: 'Hàng chính hãng Tefal' }, { icon: 'award', text: 'Bảo hành đến 36 tháng' }, { icon: 'store', text: 'Xem và nấu thử tại showroom' }],
+      contact: { text: 'Liên hệ showroom', href: '#' }
+    }),
+    h('main', { className: 'tf-container' },
+      h('section', { className: 'tf-hero tf-hero-photo', style: { '--hero-bg': HERO_BG } },
+        h('div', null,
+          h('p', { className: 'tf-hero-kicker' }, 'Nấu ngon, dọn nhanh, dùng bền'),
+          h('h1', { className: 'tf-hero-title' }, 'Đồ bếp Tefal ', h('em', null, 'cho mỗi bữa cơm.')),
+          h('p', { className: 'tf-hero-lead' }, 'Nồi chảo, nồi cơm điện, nồi chiên và máy xay chính hãng. Giá niêm yết rõ, thông số đầy đủ để so sánh trước khi mua.'),
+          h('div', { className: 'tf-hero-actions' },
+            h(B.Button, { variant: 'primary' }, 'Mua ngay'),
+            h(B.Button, null, 'Xem danh mục')))),
+
+      h('div', { className: 'tf-trust-wrap' }, h(B.TrustBar, { items: TRUST })),
+
+      h('section', { className: 'tf-section' },
+        h(B.SectionTitle, { title: 'Mua theo danh mục', moreHref: '#' }),
+        h('div', { className: 'tf-grid-6' }, TILES.map(function (t) {
+          return h(B.CategoryTile, { key: t.name, name: t.name, count: t.count, image: img(t.img), art: t.art, icon: t.icon });
+        }))),
+
+      h('section', { className: 'tf-section' },
+        h(B.SectionTitle, { title: 'Ưu đãi nổi bật', moreHref: '#' }),
+        cards(DEALS)),
+
+      h('section', { className: 'tf-section' },
+        h('div', { className: 'tf-grid-3' },
+          h(B.PromoBanner, { kicker: 'Đang giảm giá', title: 'Giảm đến 25% cho đồ bếp Tefal', cta: 'Xem ưu đãi', solid: true, images: [img('NC-067'), img('DK-067')], art: 'set' }),
+          h(B.PromoBanner, { kicker: 'Nồi cơm điện', title: '14 mẫu cao tần và điện tử', cta: 'Xem nồi cơm', images: [img('DK-064'), img('DK-090')], art: 'cooker' }),
+          h(B.PromoBanner, { kicker: 'Sản xuất tại Pháp', title: '62 mẫu nồi chảo từ nhà máy Pháp', cta: 'Xem nồi chảo', images: [img('NC-059'), img('NC-061')], art: 'pan' }))),
+
+      h('section', { className: 'tf-section' },
+        h(B.SectionTitle, { title: 'Được mua nhiều nhất', note: 'Tính từ các đơn đã đặt trên web này.' }),
+        cards(BEST)),
+      h('section', { className: 'tf-section' },
+        h(B.SectionTitle, { title: 'Giảm nhiều nhất', note: 'Xếp theo mức giảm so với giá niêm yết, không lặp các mẫu ở trên.', moreHref: '#' }),
+        cards(DEEPEST)),
+      h('section', { className: 'tf-section' },
+        h(B.SectionTitle, { title: 'Bạn đã xem gần đây', note: 'Lưu theo tài khoản lan@gmail.com trong trình duyệt này.' }),
+        cards(VIEWED))),
+    h(Footer)));
+</script>
+</body>
+</html>

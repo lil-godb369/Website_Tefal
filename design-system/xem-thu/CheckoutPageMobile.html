@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CheckoutPageMobile — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+
+</head>
+<body>
+<div id="root" class="tf-root tf-phone"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  var vnd = B.formatVND;
+  var PROVINCES = ['Hà Nội', 'TP. Hồ Chí Minh', 'Hải Phòng', 'Đà Nẵng', 'Huế', 'Cần Thơ'];
+  var DELIVERY = [
+    { key: 'giao', title: 'Giao tận nơi', text: 'Phí giao báo khi gọi xác nhận đơn.' },
+    { key: 'showroom', title: 'Nhận tại showroom', text: 'Xem hàng, nấu thử rồi nhận. Không mất phí giao.' }
+  ];
+  var PAYMENT = [
+    { key: 'cod', icon: 'bag', title: 'Trả tiền mặt khi nhận hàng (COD)', text: 'Kiểm tra hàng rồi mới trả tiền.' },
+    { key: 'chuyen-khoan', icon: 'tag', title: 'Chuyển khoản ngân hàng', text: 'Số tài khoản gửi kèm khi gọi xác nhận đơn.' },
+    { key: 'online', icon: 'shield', title: 'Thẻ ATM, Visa, ví điện tử', text: 'Chưa mở: cần đăng ký cổng thanh toán.', disabled: true }
+  ];
+  var ITEMS = [
+    { id: 'DK-061', name: 'Nồi cơm điện cao tần Rice Master Max RK819868', model: 'RK819868', price: 2679000, qty: 1, art: 'cooker' },
+    { id: 'NC-060', name: 'Bộ nồi chảo cán rời 6 món L7819022', model: 'L7819022', price: 3537000, qty: 1, art: 'set' },
+    { id: 'DK-088', name: 'Bình đun siêu tốc Smart & Light KO850810 1.7L', model: 'KO850810', price: 1102000, qty: 2, art: 'blender' }
+  ];
+  var SUB = ITEMS.reduce(function (n, x) { return n + x.price * x.qty; }, 0);
+
+  function Checkout() {
+    var d = React.useState('giao'), delivery = d[0], setDelivery = d[1];
+    var y = React.useState('cod'), payment = y[0], setPayment = y[1];
+    return h('form', { className: 'tf-checkout', noValidate: true, onSubmit: function (e) { e.preventDefault(); } },
+      h('div', { className: 'tf-checkout-main' },
+        h('section', { className: 'tf-acc-card tf-checkout-step' },
+          h('h2', null, h('span', { className: 'tf-step-no' }, '1'), 'Người nhận'),
+          h('div', { className: 'tf-form-grid' },
+            h(B.Field, { id: 'tt-ten', label: 'Họ và tên', value: 'Nguyễn Thị Lan' }),
+            h(B.Field, { id: 'tt-sdt', label: 'Số điện thoại', type: 'tel', value: '0901234567', hint: 'Để gọi xác nhận đơn.' }))),
+        h('section', { className: 'tf-acc-card tf-checkout-step' },
+          h('h2', null, h('span', { className: 'tf-step-no' }, '2'), 'Cách nhận hàng'),
+          h(B.ChoiceGroup, { legend: 'Chọn cách nhận hàng', name: 'giao-hang', items: DELIVERY, value: delivery, onChange: setDelivery }),
+          delivery === 'giao' ? h('div', { className: 'tf-form-grid' },
+            h(B.SelectField, { id: 'tt-tinh', label: 'Tỉnh, thành phố', placeholder: 'Chọn tỉnh, thành phố', options: PROVINCES, value: 'Đà Nẵng' }),
+            h(B.Field, { id: 'tt-xa', label: 'Phường, xã', value: '', error: 'Nhập phường hoặc xã.' }),
+            h('div', { className: 'tf-form-wide' },
+              h(B.Field, { id: 'tt-duong', label: 'Số nhà, tên đường', value: '25 Lê Lợi', hint: 'Ví dụ: 25 Lê Lợi. Ở nông thôn ghi thôn, ấp.' })),
+            h('label', { className: 'tf-check tf-form-wide' }, h('input', { type: 'checkbox', defaultChecked: true }), 'Lưu địa chỉ này cho lần sau')) : null,
+          h('div', { className: 'tf-field' },
+            h('label', { htmlFor: 'tt-ghichu' }, 'Ghi chú', h('span', { className: 'tf-field-opt' }, ' (không bắt buộc)')),
+            h('textarea', { id: 'tt-ghichu', rows: 2, placeholder: 'Giờ nhận hàng, chỉ đường, xuất hóa đơn' }))),
+        h('section', { className: 'tf-acc-card tf-checkout-step' },
+          h('h2', null, h('span', { className: 'tf-step-no' }, '3'), 'Thanh toán'),
+          h(B.ChoiceGroup, { legend: 'Chọn cách thanh toán', name: 'thanh-toan', items: PAYMENT, value: payment, onChange: setPayment }))),
+      h('aside', { className: 'tf-cart-sum tf-checkout-sum' },
+        h('h2', { className: 'heading' }, 'Đơn hàng'),
+        h('ul', { className: 'tf-order-lines' }, ITEMS.map(function (x) {
+          return h('li', { key: x.id },
+            h('span', { className: 'tf-order-thumb' }, h(B.Plate, { image: img(x.id), alt: '', art: x.art }),
+              h('span', { className: 'tf-order-qty', 'aria-label': 'Số lượng ' + x.qty }, x.qty)),
+            h('span', { className: 'tf-order-name' }, x.name, h('small', null, 'Model ' + x.model)),
+            h('span', { className: 'tf-order-price' }, vnd(x.price * x.qty)));
+        })),
+        h('dl', { className: 'tf-order-totals' },
+          h('dt', null, 'Tạm tính'), h('dd', null, vnd(SUB)),
+          h('dt', null, 'Giao hàng'), h('dd', null, delivery === 'showroom' ? 'Miễn phí' : 'Báo khi xác nhận'),
+          h('dt', { className: 'tf-cart-total' }, 'Tổng'), h('dd', { className: 'tf-cart-total' }, vnd(SUB))),
+        h(B.Button, { variant: 'primary', block: true, type: 'submit' }, 'Đặt hàng')));
+  }
+
+  function Page(p) {
+    return h(React.Fragment, null,
+      h(B.SiteHeader, { compact: p.phone, cartCount: 4, contact: { text: 'Liên hệ showroom', href: '#' },
+        account: { href: '#', text: 'Chào, Lan', label: 'Tài khoản của Nguyễn Thị Lan', signedIn: true } }),
+      h('main', { className: 'tf-container' },
+        h('nav', { className: 'tf-crumbs', 'aria-label': 'Đường dẫn' },
+          h('a', { href: '#' }, 'Trang chủ'), h('span', { 'aria-hidden': 'true' }, '/'),
+          h('a', { href: '#' }, 'Giỏ hàng'), h('span', { 'aria-hidden': 'true' }, '/'), h('span', null, 'Thanh toán')),
+        h('header', { className: 'tf-cat-head' },
+          h('h1', { className: 'tf-cat-title' }, 'Thanh toán'),
+          h('p', { className: 'tf-checkout-login' }, 'Đặt hàng với tài khoản lan@gmail.com')),
+        h(Checkout)));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Page, { phone: true }));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

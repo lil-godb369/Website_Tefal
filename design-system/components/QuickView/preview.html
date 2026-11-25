@@ -1,0 +1,50 @@
+<!-- @dsCard group="Sản phẩm" height=720 width=1180 subtitle="Xem nhanh: bấm thẻ SP mở modal, ảnh trái, thông tin và nút phải" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>QuickView</title>
+<style>
+  .demo-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root" style="padding:var(--space-8)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  var ITEMS = [
+    { id: 'DK-061', name: 'Nồi cơm điện cao tần Rice Master Max RK819868', model: 'RK819868', origin: 'Trung Quốc', kicker: 'Nồi cơm điện', price: 2679000, original: 3269000, art: 'cooker', w: 24,
+      figures: [{ value: '1,8', unit: 'L', label: 'Dung tích' }, { value: '1.400', unit: 'W', label: 'Công suất' }, { value: '24', unit: 'tháng', label: 'Bảo hành' }],
+      specs: [['Loại', 'Nồi cơm điện cao tần'], ['Chất liệu', 'Ceramic'], ['Kiểu điều khiển', 'Cảm ứng'], ['Kích thước (R × S × C)', '261 × 336 × 265 mm']] },
+    { id: 'NC-060', name: 'Bộ nồi chảo cán rời 6 món L7819022', model: 'L7819022', origin: 'Pháp', kicker: 'Nồi chảo', price: 3537000, original: 4349000, art: 'set', w: 36,
+      figures: [{ value: '6', unit: 'món', label: 'Trong bộ' }, { value: '36', unit: 'tháng', label: 'Bảo hành' }], specs: [['Chất liệu tay cầm', 'Cán rời']] },
+    { id: 'DK-145', name: 'Nồi chiên không dầu Easy Fry Grill Precision EY505815', model: 'EY505815', origin: 'Trung Quốc', kicker: 'Nồi chiên không dầu', price: 2307000, art: 'fryer', w: 24,
+      figures: [{ value: '4,2', unit: 'L', label: 'Dung tích' }, { value: '24', unit: 'tháng', label: 'Bảo hành' }], specs: [] },
+    { id: 'DK-229', name: 'Nồi chiên không dầu FW501815', model: 'FW501815', kicker: 'Nồi chiên không dầu', price: 0, art: 'fryer',
+      figures: [{ value: '11', unit: 'L', label: 'Dung tích' }], specs: [] }
+  ];
+  function Demo() {
+    var s = React.useState({ id: 'DK-061' }), open = s[0], setOpen = s[1];
+    var x = open && ITEMS.filter(function (i) { return i.id === open.id; })[0];
+    return h(React.Fragment, null,
+      h('div', { className: 'demo-cards' }, ITEMS.map(function (it) {
+        return h(B.ProductCard, { key: it.id, name: it.name, meta: 'Model ' + it.model, href: '#', image: img(it.id), art: it.art, price: it.price, original: it.original,
+          figure: it.figures[0], onAdd: function () {}, onQuickView: function (el) { setOpen({ id: it.id, el: el }); } });
+      })),
+      h(B.QuickView, {
+        product: x ? {
+          name: x.name, kicker: x.kicker, meta: 'Model ' + x.model + (x.origin ? ', sản xuất tại ' + x.origin : ''), href: '#', art: x.art,
+          images: [img(x.id)], price: x.price, original: x.original,
+          badges: [{ text: 'Còn hàng', tone: 'ok', dot: true }].concat(x.w ? [{ text: 'Bảo hành ' + x.w + ' tháng' }] : []),
+          figures: x.figures, specs: x.specs
+        } : null,
+        returnFocus: open && open.el,
+        onClose: function () { setOpen(null); },
+        onAdd: function () { setOpen(null); },
+        callHref: '#',
+        note: 'Xem và nấu thử tại showroom trước khi mua.'
+      }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

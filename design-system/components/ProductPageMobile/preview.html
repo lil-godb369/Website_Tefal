@@ -1,0 +1,43 @@
+<!-- @dsCard page group="Khung trang" height=1500 width=390 subtitle="Trang chi tiết trên điện thoại 390px, thanh mua dính đáy" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Trang chi tiết, điện thoại</title></head>
+<body>
+<div id="root" class="tf-root tf-phone"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SiteHeader, { account: { href: '#', text: 'Đăng nhập / Đăng ký', label: 'Đăng nhập hoặc đăng ký' }, compact: true, cartCount: 2 }),
+    h('main', { className: 'tf-container' },
+      h('nav', { className: 'tf-crumbs', 'aria-label': 'Đường dẫn' },
+        h('a', { href: '#' }, 'Trang chủ'), h('span', { 'aria-hidden': 'true' }, '/'),
+        h('a', { href: '#' }, 'Nồi cơm điện'), h('span', { 'aria-hidden': 'true' }, '/'), h('span', null, 'RK819868')),
+      h('div', { className: 'tf-pdp' },
+        h('div', { className: 'tf-gallery', 'aria-label': 'Ảnh sản phẩm, vuốt ngang' },
+          h(B.Plate, { image: img('DK-061'), alt: 'Nồi cơm điện cao tần Tefal Rice Master Max RK819868', art: 'cooker', eager: true }),
+          h(B.Plate, { alt: '', art: 'cooker' })),
+        h('div', { className: 'tf-buy' },
+          h('div', null,
+            h('h1', { className: 'tf-buy-name' }, 'Nồi cơm điện cao tần Rice Master Max RK819868'),
+            h('p', { className: 'tf-buy-meta' }, 'Model RK819868, sản xuất tại Trung Quốc')),
+          h(B.PriceTag, { price: 2679000, original: 3269000, size: 'lg' }),
+          h('div', { className: 'tf-figure-row' },
+            h(B.SpecFigure, { value: '1,8', unit: 'L', label: 'Dung tích' }),
+            h(B.SpecFigure, { value: '1.400', unit: 'W', label: 'Công suất' }),
+            h(B.SpecFigure, { value: '24', unit: 'tháng', label: 'Bảo hành' })),
+          h('div', { className: 'tf-card-badges' },
+            h(B.Badge, { tone: 'ok', dot: true }, 'Còn hàng'), h(B.Badge, null, 'Bảo hành 24 tháng')),
+          h('div', { className: 'tf-buy-actions' },
+            h(B.Button, { variant: 'primary' }, 'Thêm vào giỏ'),
+            h(B.Button, null, 'Gọi tư vấn')),
+          h(B.SpecTable, { caption: 'Thông số', rows: [
+            ['Loại', 'Nồi cơm điện cao tần'], ['Chất liệu', 'Ceramic'], ['Kiểu điều khiển', 'Cảm ứng'],
+            ['Kích thước (R × S × C)', '261 × 336 × 265 mm'], ['Xuất xứ', 'Trung Quốc']
+          ] })))),
+    h('div', { className: 'tf-buybar' },
+      h(B.PriceTag, { price: 2679000, original: 3269000 }),
+      h(B.Button, { variant: 'primary', block: true }, 'Thêm vào giỏ'))));
+</script>
+</body>
+</html>

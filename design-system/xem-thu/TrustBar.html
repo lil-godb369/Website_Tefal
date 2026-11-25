@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustBar — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+<style>
+  .demo-ink { margin-top: var(--space-8); padding: var(--space-8) var(--space-6); background: var(--ink); border-radius: var(--radius-md); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root" style="padding:var(--space-8)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  var items = [
+    { icon: 'shield', title: 'Chính hãng Tefal', text: 'Thương hiệu của Groupe SEB' },
+    { icon: 'award', title: 'Bảo hành đến 36 tháng', text: 'Theo chính sách của hãng' },
+    { icon: 'tag', title: 'Giá niêm yết rõ', text: 'Hiện cả giá gốc và mức giảm' },
+    { icon: 'store', title: 'Tư vấn tại showroom', text: 'Xem và nấu thử trước khi mua' }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.TrustBar, { items: items }),
+    h('div', { className: 'demo-ink' }, h(B.TrustBar, { dark: true, items: items }))));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

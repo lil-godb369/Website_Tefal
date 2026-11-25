@@ -1,0 +1,13 @@
+<!-- @dsCard group="Trạng thái" height=400 width=900 subtitle="Khối mời đăng nhập thay cho giỏ hàng và thanh toán khi khách chưa đăng nhập" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>LoginGate</title></head>
+<body>
+<div id="root" class="tf-root" style="padding:0 var(--space-6) var(--space-8)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h(B.LoginGate, { title: 'Đăng nhập để xem giỏ hàng', signInHref: '#', signUpHref: '#', browseHref: '#' }));
+</script>
+</body>
+</html>

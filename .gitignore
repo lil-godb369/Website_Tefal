@@ -1,0 +1,24 @@
+node_modules/
+.next/
+out/
+test-results/
+playwright-report/
+coverage/
+*.tsbuildinfo
+.env*
+!.env.example
+.vercel
+.claude/settings.local.json
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Dữ liệu thô và ghi chú nội bộ: chỉ lưu trên máy
+/data/
+/memory/
+/CLAUDE.md
+/reference/*.png
+/reference/*.webp
+/reference/*.jpg
+/reference/*.pdf

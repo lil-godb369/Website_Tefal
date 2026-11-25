@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi" data-theme="sang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductCard — Tefal Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script>var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.setAttribute('data-theme',t);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script>
+<script>window.TF_IMG = 'https://krtjhvqbdjbjibamgslg.supabase.co/storage/v1/object/public/bnb-product-images/manual-thumb/{id}.jpg'; window.TF.photoCrop = { x: 0.02, y: 0.13, w: 0.6, h: 0.8 }; window.TF_HERO = '../assets/Hero/hero-bep.jpg';</script>
+<style>
+  .demo-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root" style="padding:var(--space-8)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  var items = [
+    { id: 'DK-061', name: 'Nồi cơm điện cao tần Rice Master Max RK819868', meta: 'Model RK819868', price: 2679000, original: 3269000, art: 'cooker', figure: { value: '1,8', unit: 'L', label: 'Dung tích' } },
+    { id: 'NC-060', name: 'Bộ nồi chảo cán rời 6 món L7819022', meta: 'Model L7819022', price: 3537000, original: 4349000, art: 'set', figure: { value: '6', unit: 'món', label: 'Trong bộ' } },
+    { id: 'DK-145', name: 'Nồi chiên không dầu Easy Fry Grill Precision EY505815', meta: 'Model EY505815', price: 2307000, art: 'fryer', figure: { value: '4,2', unit: 'L', label: 'Dung tích' } },
+    { id: 'DK-229', name: 'Nồi chiên không dầu FW501815', meta: 'Model FW501815', price: 0, art: 'fryer', figure: { value: '11', unit: 'L', label: 'Dung tích' } }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { className: 'demo-cards' },
+    items.map(function (it) { return h(B.ProductCard, Object.assign({ key: it.id, image: img(it.id), onAdd: function () {} }, it)); })));
+</script>
+<script>addEventListener('load',function(){setTimeout(function(){if(parent!==window)parent.postMessage({tfHeight:document.documentElement.scrollHeight},'*');},500);});</script></body>
+</html>

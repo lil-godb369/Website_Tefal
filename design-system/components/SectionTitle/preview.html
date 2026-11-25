@@ -1,0 +1,14 @@
+<!-- @dsCard group="Khu vực trang" height=230 width=1000 subtitle="Tiêu đề khu vực in hoa căn giữa, nét nhấn đỏ" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>SectionTitle</title></head>
+<body>
+<div id="root" class="tf-root" style="padding:var(--space-8) var(--space-12)"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SectionTitle, { title: 'Mua theo danh mục', moreHref: '#' }),
+    h(B.SectionTitle, { title: 'Cùng nhóm, giá gần nhất', note: 'Nồi cơm điện có 14 mẫu đang bán.', moreHref: '#' })));
+</script>
+</body>
+</html>

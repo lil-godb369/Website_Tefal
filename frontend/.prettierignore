@@ -1,0 +1,7 @@
+.next
+node_modules
+src/data/catalog.json
+src/styles/tokens.css
+src/styles/tf.css
+src/styles/site.css
+package-lock.json

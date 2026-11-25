@@ -1,0 +1,52 @@
+<!-- @dsCard page group="Khung trang" height=1900 width=1280 subtitle="Trang danh mục, desktop 1280px" -->
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Trang danh mục</title>
+<style>
+  .demo-note { color: var(--text-muted); font-size: 14px; margin: var(--space-4) 0 var(--space-6); max-width: 68ch; }
+  .demo-sort select { min-height: 36px; padding: 0 var(--space-8) 0 var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); font: 400 14px/1 var(--font-sans); }
+  .demo-more { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-12) 0 0; color: var(--text-muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div id="root" class="tf-root"></div>
+<script>
+  var B = window.TF, h = React.createElement;
+  function img(id) { return window.TF_IMG ? window.TF_IMG.replace('{id}', id) : undefined; }
+  // Nồi chiên không dầu, xếp "Nổi bật" (giảm nhiều trước); mẫu chưa có giá xuống cuối (dữ liệu 12/10/2026)
+  var items = [
+    { id: 'DK-068', name: 'Nồi chiên không dầu điện tử Mega EY855D68', model: 'EY855D68', price: 2222000, original: 2739000, fig: ['7,5', 'L'] },
+    { id: 'DK-069', name: 'Nồi chiên không dầu Mega EY8558E0', model: 'EY8558E0', price: 2213000, original: 2729000, fig: ['7,5', 'L'] },
+    { id: 'DK-074', name: 'Nồi chiên không dầu điện tử Window EY8211Y0', model: 'EY8211Y0', price: 1960000, original: 2419000, fig: ['6', 'L'] },
+    { id: 'DK-087', name: 'Nồi chiên không dầu EasyFry Window 6L EY821868', model: 'EY821868', price: 2127000, original: 2399000, fig: ['6', 'L'] },
+    { id: 'DK-057', name: 'Nồi chiên không dầu kết hợp lò nướng FW6058KR', model: 'FW6058KR', price: 4954000, original: 5490000, fig: ['20', 'L'] },
+    { id: 'DK-102', name: 'Nồi chiên không dầu Easy Max EY245310', model: 'EY245310', price: 1833000, original: 1890000, fig: ['5', 'L'] },
+    { id: 'DK-145', name: 'Nồi chiên không dầu Easy Fry Grill Precision EY505815', model: 'EY505815', price: 2307000, fig: ['4,2', 'L'] },
+    { id: 'DK-229', name: 'Nồi chiên không dầu FW501815', model: 'FW501815', price: 0, fig: ['11', 'L'] },
+    { id: 'DK-230', name: 'Nồi chiên không dầu EY905D10', model: 'EY905D10', price: 0, fig: ['8,3', 'L'] }
+  ];
+  function chip(label, on) { return h('button', { key: label, className: 'tf-chip', type: 'button', 'aria-pressed': on ? 'true' : 'false' }, label); }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(B.SiteHeader, { account: { href: '#', text: 'Đăng nhập / Đăng ký', label: 'Đăng nhập hoặc đăng ký' }, active: 'Nồi chiên', cartCount: 2, contact: { text: 'Liên hệ showroom', href: '#' } }),
+    h('main', { className: 'tf-container' },
+      h('nav', { className: 'tf-crumbs', 'aria-label': 'Đường dẫn' },
+        h('a', { href: '#' }, 'Trang chủ'), h('span', { 'aria-hidden': 'true' }, '/'), h('span', null, 'Nồi chiên không dầu')),
+      h('header', { className: 'tf-cat-head' },
+        h('h1', { className: 'tf-cat-title' }, 'Nồi chiên không dầu'),
+        h('span', { className: 'tf-cat-count' }, '9', h('small', null, 'mẫu'))),
+      h('p', { className: 'demo-note' }, '2 mẫu chưa có giá bán, hiện cuối danh sách với nút gọi báo giá.'),
+      h('div', { className: 'tf-toolbar' },
+        h('div', { className: 'tf-chips', role: 'group', 'aria-label': 'Lọc sản phẩm' },
+          chip('Tất cả', true), chip('Dưới 1 triệu'), chip('1 đến 3 triệu'), chip('Trên 3 triệu'), chip('Sản xuất tại Pháp'), chip('Đang giảm giá')),
+        h('label', { className: 'tf-sort demo-sort' }, 'Sắp xếp ',
+          h('select', { defaultValue: 'noi-bat' },
+            h('option', { value: 'noi-bat' }, 'Nổi bật'), h('option', { value: 'con-so' }, 'Con số lớn trước'),
+            h('option', { value: 'gia-tang' }, 'Giá thấp đến cao'), h('option', { value: 'gia-giam' }, 'Giá cao đến thấp')))),
+      h('div', { className: 'tf-grid-products' }, items.map(function (d) {
+        return h(B.ProductCard, { key: d.id, name: d.name, meta: 'Model ' + d.model, image: img(d.id), art: 'fryer', price: d.price, original: d.original,
+          figure: { value: d.fig[0], unit: d.fig[1], label: 'Dung tích' }, onAdd: function () {} });
+      })))));
+</script>
+</body>
+</html>
